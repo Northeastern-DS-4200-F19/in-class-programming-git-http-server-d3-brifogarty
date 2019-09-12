@@ -22,7 +22,24 @@ var barChart = svg.selectAll("rect")
         return d; 
     })
     .attr("width", barWidth - barPadding)
-    .style("fill", "red") //enter a color here
+    .style("fill", "cornsilk") //enter a color here
+    .attr("transform", function (d, i) {
+        var translate = [barWidth * i, 0]; 
+        return "translate("+ translate +")";
+    });
+
+var lineChart = svg.selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+    .attr("y", function(d) {
+         return svgHeight - d 
+    })
+    .attr("height", function(d) { 
+        return d; 
+    })
+    .attr("width", barWidth - barPadding)
+    .style("fill", "cornsilk") //enter a color here
     .attr("transform", function (d, i) {
         var translate = [barWidth * i, 0]; 
         return "translate("+ translate +")";
